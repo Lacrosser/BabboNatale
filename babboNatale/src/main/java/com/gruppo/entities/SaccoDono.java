@@ -1,5 +1,9 @@
 package com.gruppo.entities;
 
+
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -17,9 +21,11 @@ public class SaccoDono {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "sacco_id")
 	private Sacco sacco;
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "dono_id")
@@ -36,7 +42,7 @@ public class SaccoDono {
 	public void setId(int id) {
 		this.id = id;
 	}
-
+	@JsonIgnore
 	public Sacco getSacco() {
 		return sacco;
 	}
@@ -44,7 +50,7 @@ public class SaccoDono {
 	public void setSacco(Sacco sacco) {
 		this.sacco = sacco;
 	}
-
+	@JsonIgnore
 	public Dono getDono() {
 		return dono;
 	}
