@@ -31,112 +31,162 @@ public class Rest {
 
 	@Autowired
 	BabboNataleRepo babborepo;
-	
+
 	@Autowired
 	BambinoRepo bambrepo;
-	
+
 	@Autowired
 	DonoBambinoRepo donoBambrepo;
-	
+
 	@Autowired
 	DonoRepo donorepo;
-	
+
 	@Autowired
 	SaccoDonoRepo saccoDonorepo;
-	
+
 	@Autowired
 	SaccoRepo saccorepo;
-	
-	@GetMapping(path={"babbi","babbi/{id}"})
+
+	@GetMapping(path = { "babbi", "babbi/{id}" })
 	@CrossOrigin
-	public List<BabboNatale> getBabbi(@PathVariable(required = false)Integer id){
-		
-		if(id==null) {
+	public List<BabboNatale> getBabbi(@PathVariable(required = false) Integer id) {
+
+		if (id == null) {
 			return babborepo.findAll();
-			
-		}else {
-			if(id<=4) {
-				
-				return List.of( babborepo.findById(id).get()) ;
-			}else {
+
+		} else {
+			if (id <= babborepo.findAll().size()) {
+
+				return List.of(babborepo.findById(id).get());
+			} else {
 				return null;
 			}
-				
+
 		}
-		
+
 	}
-	
-	@PostMapping(path="babbi")
+
+	@PostMapping(path = "babbi")
 	public BabboNatale addBabbo(@RequestBody BabboNatale b) {
-		
+
 		return babborepo.save(b);
 	}
-	
-	
-	
-	
-	@GetMapping(path="bambini")
+
+	@GetMapping(path = { "bambini", "bambini/{id}" })
 	@CrossOrigin
-	public List<Bambino> getBambino(){
-		return bambrepo.findAll();
+	public List<Bambino> getBambino(@PathVariable(required = false) Integer id) {
+
+		if (id == null) {
+
+			return bambrepo.findAll();
+
+		} else {
+			if (id <= bambrepo.findAll().size()) {
+
+				return List.of(bambrepo.findById(id).get());
+			} else {
+				return null;
+			}
+
+		}
 	}
-	
-	@PostMapping(path="bambini")
+
+	@PostMapping(path = "bambini")
 	public Bambino addBambino(@RequestBody Bambino b) {
-		
+
 		return bambrepo.save(b);
 	}
-	
-	
-	
-	@GetMapping(path="doni")
+
+	@GetMapping(path = { "dono", "dono/{id}" })
 	@CrossOrigin
-	public List<Dono> getDono(){
-		return donorepo.findAll();
+	public List<Dono> getDono(@PathVariable(required = false) Integer id) {
+		if (id == null) {
+
+			return donorepo.findAll();
+
+		} else {
+			if (id <= donorepo.findAll().size()) {
+
+				return List.of(donorepo.findById(id).get());
+			} else {
+				return null;
+			}
+		}
 	}
-	
-	@PostMapping(path="doni")
+
+	@PostMapping(path = "doni")
 	public Dono addDono(@RequestBody Dono b) {
-		
+
 		return donorepo.save(b);
 	}
-	
-	
-	@GetMapping(path="donibambini")
+
+	@GetMapping(path = { "donibambini", "donibambini/{id}" })
 	@CrossOrigin
-	public List<DonoBambino> getDonoBambino(){
-		return donoBambrepo.findAll();
+	public List<DonoBambino> getDonoBambino(@PathVariable(required = false) Integer id) {
+		if (id == null) {
+
+			return donoBambrepo.findAll();
+
+		} else {
+			if (id <= donoBambrepo.findAll().size()) {
+
+				return List.of(donoBambrepo.findById(id).get());
+			} else {
+				return null;
+			}
+		}
 	}
-	
-	@PostMapping(path="donibambini")
+
+	@PostMapping(path = "donibambini")
 	public DonoBambino addDonoBambino(@RequestBody DonoBambino b) {
-		
+
 		return donoBambrepo.save(b);
 	}
-	
-	
-	@GetMapping(path="sacchi")
+
+	@GetMapping(path = { "sacchi", "sacchi/{id}" })
 	@CrossOrigin
-	public List<Sacco> getSacco(){
-		return saccorepo.findAll();
+	public List<Sacco> getSacco(@PathVariable(required = false) Integer id) {
+		if (id == null) {
+
+			return saccorepo.findAll();
+
+		} else {
+			if (id <= saccorepo.findAll().size()) {
+
+				return List.of(saccorepo.findById(id).get());
+			} else {
+				return null;
+			}
+		}
 	}
-	
-	@PostMapping(path="sacchi")
+
+	@PostMapping(path = "sacchi")
 	public Sacco addSacco(@RequestBody Sacco b) {
-		
+
 		return saccorepo.save(b);
 	}
-	
-	@GetMapping(path="sacchidoni")
+
+	@GetMapping(path = { "sacchidoni", "sacchidoni/{id}" })
 	@CrossOrigin
-	public List<SaccoDono> getSaccoDono(){
-		return saccoDonorepo.findAll();
+	public List<SaccoDono> getSaccoDono(@PathVariable(required = false) Integer id) {
+		if (id == null) {
+
+			return saccoDonorepo.findAll();
+
+		} else {
+			if (id <= saccoDonorepo.findAll().size()) {
+
+				return List.of(saccoDonorepo.findById(id).get());
+			} else {
+				return null;
+			}
+		}
 	}
-	
-	@PostMapping(path="sacchidoni")
+
+	@PostMapping(path = "sacchidoni")
 	public SaccoDono addSaccoDono(@RequestBody SaccoDono b) {
-		
+
 		return saccoDonorepo.save(b);
 	}
-	
+
 }
