@@ -2,7 +2,9 @@ package com.gruppo.entities;
 
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -10,7 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "babbo_natale")
+@Table(name = "babbonatale")
 public class BabboNatale {
 
 	@Id
@@ -22,27 +24,22 @@ public class BabboNatale {
 	private String mezzo;
 	private String zona;
 
-	@OneToMany(mappedBy = "sacco")
-	private Set<Sacco> sacchi;
-
-	
+	@OneToMany(mappedBy = "babbo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<Sacco> sacco;
 
 	public BabboNatale() {
 		// TODO Auto-generated constructor stub
 	}
 
 	
-
-	public BabboNatale(int id, String nome, String cognome, String mezzo, String zona, Set<Sacco> sacchi) {
+	public BabboNatale(String nome, String cognome, String mezzo, String zona, Set<Sacco> sacco) {
 		super();
-		this.id = id;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.mezzo = mezzo;
 		this.zona = zona;
-		this.sacchi = sacchi;
+		this.sacco = sacco;
 	}
-
 
 
 	public int getId() {
@@ -69,8 +66,6 @@ public class BabboNatale {
 		this.cognome = cognome;
 	}
 
-	
-
 	public String getMezzo() {
 		return mezzo;
 	}
@@ -87,12 +82,12 @@ public class BabboNatale {
 		this.zona = zona;
 	}
 
-	public Set<Sacco> getSacchi() {
-		return sacchi;
+	public Set<Sacco> getSacco() {
+		return sacco;
 	}
 
-	public void setSacchi(Set<Sacco> sacchi) {
-		this.sacchi = sacchi;
+	public void setSacco(Set<Sacco> sacco) {
+		this.sacco = sacco;
 	}
 
 }

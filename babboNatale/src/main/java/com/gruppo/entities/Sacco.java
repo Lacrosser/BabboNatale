@@ -6,8 +6,10 @@ import java.util.Set;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,24 +32,16 @@ public class Sacco {
 
 	@Column(columnDefinition = "TIME")
 	@DateTimeFormat(iso = ISO.TIME)
-	private LocalTime oraAssegnazione;
+	LocalTime oraAssegnazione;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "babbo_id")
-	private BabboNatale babbonatale;
-
-	@OneToMany(mappedBy = "sacco")
-	private Set<SaccoDono> sacchiDoni;
-
-	public Sacco(int id, LocalTime oraConsegna, LocalTime oraAssegnazione, BabboNatale babbonatale,
-			Set<SaccoDono> sacchiDoni) {
-		super();
-		this.id = id;
-		this.oraConsegna = oraConsegna;
-		this.oraAssegnazione = oraAssegnazione;
-		this.babbonatale = babbonatale;
-		this.sacchiDoni = sacchiDoni;
-	}
+	private BabboNatale babbo;
+	
+	@OneToMany(mappedBy = "sacco", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<SaccoDono> sacchidono;
+	
+	
 
 	public Sacco() {
 		// TODO Auto-generated constructor stub
@@ -77,20 +71,21 @@ public class Sacco {
 		this.oraAssegnazione = oraAssegnazione;
 	}
 
-	public BabboNatale getBabbonatale() {
-		return babbonatale;
+	public BabboNatale getBabbo() {
+		return babbo;
 	}
 
-	public void setBabbonatale(BabboNatale babbonatale) {
-		this.babbonatale = babbonatale;
+	public void setBabbo(BabboNatale babbo) {
+		this.babbo = babbo;
 	}
 
-	public Set<SaccoDono> getSacchiDoni() {
-		return sacchiDoni;
+	public Set<SaccoDono> getSacchidono() {
+		return sacchidono;
 	}
 
-	public void setSacchiDoni(Set<SaccoDono> sacchiDoni) {
-		this.sacchiDoni = sacchiDoni;
+	public void setSacchidono(Set<SaccoDono> sacchidono) {
+		this.sacchidono = sacchidono;
 	}
+	
 
 }
