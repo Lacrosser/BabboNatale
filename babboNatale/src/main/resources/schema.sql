@@ -29,7 +29,7 @@ CREATE TABLE `babbonatale` (
   `nome` varchar(255) DEFAULT NULL,
   `zona` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `bambino` (
   `indirizzo` varchar(255) DEFAULT NULL,
   `nome` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `dono` (
   `disponibilita` int NOT NULL,
   `nome` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -81,7 +81,7 @@ CREATE TABLE `dono_bambino` (
   KEY `FK6fx8srgwy999c89pcxwka5c5` (`bambino_id`),
   CONSTRAINT `FK6fx8srgwy999c89pcxwka5c5` FOREIGN KEY (`bambino_id`) REFERENCES `bambino` (`id`),
   CONSTRAINT `FKpjjdv10vhroc2tvpl24lp912n` FOREIGN KEY (`dono_id`) REFERENCES `dono` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `sacco` (
   PRIMARY KEY (`id`),
   KEY `FK1xah1y7mcufpsnnqxukl6qv8` (`babbo_id`),
   CONSTRAINT `FK1xah1y7mcufpsnnqxukl6qv8` FOREIGN KEY (`babbo_id`) REFERENCES `babbonatale` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -118,7 +118,7 @@ CREATE TABLE `sacco_dono` (
   KEY `FKowf7o120qrwgxq7q21o7pmk03` (`sacco_id`),
   CONSTRAINT `FKj0dkp6mq5q8hrw6v377x89xq6` FOREIGN KEY (`dono_id`) REFERENCES `dono` (`id`),
   CONSTRAINT `FKowf7o120qrwgxq7q21o7pmk03` FOREIGN KEY (`sacco_id`) REFERENCES `sacco` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -130,4 +130,4 @@ CREATE TABLE `sacco_dono` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-12-15 12:19:22
+-- Dump completed on 2022-12-15 14:16:21

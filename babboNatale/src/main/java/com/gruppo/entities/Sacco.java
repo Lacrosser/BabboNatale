@@ -6,6 +6,8 @@ import java.util.Set;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,7 +35,8 @@ public class Sacco {
 	@Column(columnDefinition = "TIME")
 	@DateTimeFormat(iso = ISO.TIME)
 	LocalTime oraAssegnazione;
-
+	
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "babbo_id")
 	private BabboNatale babbo;
@@ -70,7 +73,7 @@ public class Sacco {
 	public void setOraAssegnazione(LocalTime oraAssegnazione) {
 		this.oraAssegnazione = oraAssegnazione;
 	}
-
+	@JsonIgnore
 	public BabboNatale getBabbo() {
 		return babbo;
 	}

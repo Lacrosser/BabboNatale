@@ -5,6 +5,8 @@ import java.time.LocalTime;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,9 +25,11 @@ public class DonoBambino {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "bambino_id")
 	private Bambino bambino;
+	
 	
 	@ManyToOne(fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name = "dono_id")
@@ -43,37 +47,65 @@ public class DonoBambino {
 		// TODO Auto-generated constructor stub
 	}
 
+
+
 	public int getId() {
 		return id;
 	}
+
+
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	
+
+
+	public Bambino getBambino() {
+		return bambino;
+	}
+
+
+	@JsonIgnore
+	public void setBambino(Bambino bambino) {
+		this.bambino = bambino;
+	}
+
+
 
 	public Dono getDono() {
 		return dono;
 	}
 
+
+	@JsonIgnore
 	public void setDono(Dono dono) {
 		this.dono = dono;
 	}
-	
+
+
+
 	public LocalTime getOraConsegna() {
 		return oraConsegna;
 	}
+
+
+
 	public void setOraConsegna(LocalTime oraConsegna) {
 		this.oraConsegna = oraConsegna;
 	}
+
+
 
 	public String getStato() {
 		return stato;
 	}
 
+
+
 	public void setStato(String stato) {
 		this.stato = stato;
 	}
+
 	
 }

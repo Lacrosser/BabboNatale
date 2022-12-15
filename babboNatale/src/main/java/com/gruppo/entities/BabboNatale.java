@@ -2,6 +2,8 @@ package com.gruppo.entities;
 
 import java.util.Set;
 
+
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -23,7 +25,8 @@ public class BabboNatale {
 	private String cognome;
 	private String mezzo;
 	private String zona;
-
+	
+	
 	@OneToMany(mappedBy = "babbo", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Sacco> sacco;
 
@@ -81,7 +84,8 @@ public class BabboNatale {
 	public void setZona(String zona) {
 		this.zona = zona;
 	}
-
+	
+	
 	public Set<Sacco> getSacco() {
 		return sacco;
 	}
