@@ -1,6 +1,7 @@
 .title{
   font-family: 'Berkshire Swash', cursive;
   /* color: rgba(255, 0, 0, .7); */
+  color:#e17772;
 }
 
 .spazioBtn{
@@ -28,3 +29,12 @@
  .txtColor{
    color: aqua;
  }
+
+ .bgButton {
+  background-color: #d84f48;
+ }
+
+ .btn:hover{
+  color:#0F8A5F ;
+ }
+ /* a:hover{color:red;} */
