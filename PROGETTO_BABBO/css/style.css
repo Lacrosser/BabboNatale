@@ -42,3 +42,17 @@
  .sfondo-tab{
   background-color: #235e6fbe;
  }
+
+ .saccoReportBabbo{
+  text-align: center;
+ }
+
+ tr{
+  text-align: center;
+ }
+
+ td {
+  text-align: center;
+  height: 50px;
+  width: 100px;
+}
