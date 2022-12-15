@@ -1,10 +1,12 @@
 package com.gruppo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,10 +47,23 @@ public class Rest {
 	@Autowired
 	SaccoRepo saccorepo;
 	
-	@GetMapping(path="babbi")
+	@GetMapping(path={"babbi","babbi/{id}"})
 	@CrossOrigin
-	public List<BabboNatale>getBabbi(){
-		return babborepo.findAll();
+	public List<BabboNatale> getBabbi(@PathVariable(required = false)Integer id){
+		
+		if(id==null) {
+			return babborepo.findAll();
+			
+		}else {
+			if(id<=4) {
+				
+				return List.of( babborepo.findById(id).get()) ;
+			}else {
+				return null;
+			}
+				
+		}
+		
 	}
 	
 	@PostMapping(path="babbi")
