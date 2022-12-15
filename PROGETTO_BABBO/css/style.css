@@ -84,4 +84,5 @@ th{
 table{
   box-shadow: 2px 0 #ffffff85, -2px 0 #ffffff85, 0 2px #ffffff85, 0 -2px #ffffff85,
                2px 2px #ffffff85, -2px -2px #ffffff85, 2px -2px #ffffff85, -2px 2px #ffffff85;
+  border-radius: 2%;
 }
